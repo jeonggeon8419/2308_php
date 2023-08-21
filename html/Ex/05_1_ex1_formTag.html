@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<form action="">
+		<fieldset>
+		<legend>기본사항</legend>
+		<label for="id">ID : </label>
+		<input type="text" name="id" id="id" minlength="8" maxlength="15" placeholder="요기요 주문">
+		<br>
+		<label for="pw">PW : </label>
+		<input type="password" name="pw" id="pw" required>
+		<br>
+		<label for="txta"> 기타 : </label>
+		<textarea name="txta" id="txta" cols="30" rows="10"></textarea>
+		<br>
+		<label for="술종류">알코올 선택 : </label>
+		<select name="poketmon" id="poketmon">
+			<option value="0">종류</option>
+			<option value="0">진로</option>
+			<option value="1">테라</option>
+			<option value="2">고량주</option>
+			<option value="2">데낄라</option>
+
+		</select>
+		</fieldset>
+		<br>
+		<label for="email">email : </label>
+		<input type="email" name="email" id="email" value="찍먹만" readonly>
+		<br>
+		<label for="number">number : </label>
+		<input type="number" name="number" id="number" min="0" max="5">
+		<br>
+		<label for="range">range : </label>
+		<input type="range" name="range" id="range" min="0" max="100">
+		<br>
+		<label for="date">date : </label>
+		<input type="date" name="date" id="date">
+		<br>
+		<label for="banana">바나나 : </label>
+		<input type="checkbox" id="banana" name="chk_fruit">
+		<label for="sb">딸기 : </label>
+		<input type="checkbox" id="sb" name="chk_fruit">
+		<label for="wm">수박 : </label>
+		<input type="checkbox" id="wm" name="chk_fruit">
+
+		<br>
+		<label for="zz">짜장면 : </label>
+		<input type="radio" id="zz" name="foods">
+		<label for="ta">탕슉 : </label>
+		<input type="radio" id="ta" name="foods">
+		<label for="gg">찍먹 : </label>
+		<input type="radio" id="gg" name="foodss">
+		<label for="bu">부먹 : </label>
+		<input type="radio" id="bu" name="foodss">
+		
+		<br>
+		<!-- <input type="submit">
+		<input type="reset"> -->
+
+		<button type="submit">전송</button>
+		<button type="reset">초기화</button>
+		<button type="button">버튼</button>
+
+		<br>
+		<input type="hidden" value="히든" name="hidden">
+	</form>	
+</body>
+</html>
