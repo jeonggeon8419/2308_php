@@ -1,0 +1,23 @@
+.deco {
+	text-decoration: none; /*디폴트값*/
+	text-decoration: underline;/*밑줄*/
+	text-decoration: line-through;/*취소선*/
+	text-decoration: overline;
+}
+
+.height {
+	line-height: 2em;
+}
+
+.left {
+	text-align: left;
+}
+.right {
+	text-align: right;
+}
+.center {
+	background-color: aqua;
+	height: 300px;
+	line-height: 300px;              /*세로정렬*/
+	text-align: center;
+}

@@ -1,0 +1,15 @@
+
+#h1-id{
+	color: aqua;
+}
+.h1-1 {
+	color: blue; /* 주로사용 */
+}
+
+h1 {
+	color: red !important;
+}
+
+h1{
+	color: orange;
+}
