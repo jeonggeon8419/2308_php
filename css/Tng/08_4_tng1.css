@@ -1,0 +1,12 @@
+ul {
+	list-style: none;
+	display: flex; /*현업에서 많이 쓴다*/
+}
+.li {	
+	padding: 30px;
+	background-color: rgb(126, 122, 122);
+	/* list-style: none; */
+	/* display: inline; */
+	/* margin-right: -6px; */
+ 	}
+

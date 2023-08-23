@@ -1,0 +1,63 @@
+main, section, article {
+	padding: 20px;
+}
+
+main {
+	background-color: rgb(255, 6, 6);
+}
+section {
+	background-color: rgb(236, 110, 7);
+	
+}
+article {
+	background-color: rgb(229, 245, 10);
+	position: relative;
+	/* height: 1000px; */
+}
+
+
+
+.div_static {
+	background-color: rgb(15, 201, 28);
+	position: static;
+}
+.div_relative {
+	background-color: rgb(12, 9, 223);
+	position: relative;
+}
+.div_absolute {
+	background-color: rgb(52, 93, 168);
+	position: absolute;
+	top: 0;
+	left: 0;
+}	
+.div_fixed {
+	background-color: rgb(239, 19, 195);
+	/* position: fixed;
+	right: 50%;
+	bottom: 50%; */
+}
+.div_sticky {
+	background-color: rgb(197, 114, 12);
+	position: sticky;
+	top: 0;
+}
+
+.zindex1 {
+	background-color: brown;
+	width: 100px;
+	position: absolute;
+	z-index: 3;
+}
+.zindex2 {
+	background-color: rgb(59, 37, 37);
+	width: 200px;
+	position: absolute;
+	z-index: 2;
+}
+.zindex3 {
+	background-color: rgb(192, 176, 176);
+	width: 300px;
+	position: absolute;
+	z-index: 1;
+}
