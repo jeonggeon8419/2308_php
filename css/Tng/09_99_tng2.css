@@ -1,0 +1,43 @@
+body {
+	background-color: black;
+}
+
+li {
+	list-style: none;
+}
+
+div {
+	background-color: #fafdfd;
+	width: 500px;
+	height: 800px;
+	margin: 10px auto;
+	padding: 10px; 
+	position: relative;
+}	
+
+h1 	{
+	height: 50px;
+	width: 450px;
+	text-align: center;
+	color: #fafdfd;
+	background-color:  #054041;
+	margin: 10px auto;
+	padding: 10px; 
+}
+
+h3 {
+
+	text-align: center;
+}
+
+p{
+	color: red;
+	font-size: 20px;
+}
+
+img {
+	width: 300px;
+	position: absolute;
+	bottom: 0%;
+	right: 0%;
+}

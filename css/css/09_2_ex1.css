@@ -1,0 +1,20 @@
+.div-img{
+	width: 800px;
+	height: 800px;
+	border: 1px solid #000;
+
+
+	background-image: url(../img/억울이.jpeg);
+	
+	background-size: 100%;
+
+	background-repeat: no-repeat;/*사진 한개만 y=세로*/
+
+	background-position: top%; /*위치 변경가능 top left */
+}
+
+body {
+	background-image: url(../img/억울이.jpeg);
+	background-size: cover;
+	/* background-repeat: no-repeat; */
+}
