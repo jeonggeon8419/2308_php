@@ -1,0 +1,53 @@
+a {
+	color: rgb(173, 9, 9);
+
+}
+
+a:link {
+	color: blueviolet;
+}
+a:visited {
+	color: blue;
+}
+
+a:hover {
+	background-color: aqua;
+}
+
+#input-1:focus {
+	outline: none;
+	border: 2px solid yellow;
+}
+
+input:checked + label {
+	color: aqua;
+}
+
+#target-1:target {
+	background-color: red;
+}
+
+/* .container :nth-child(4) {
+	color: rgb(68, 10, 203);
+} */
+
+.container p:nth-of-type(2) {
+	color: rgb(68, 10, 203);
+}
+
+.container :not(p) {
+color: brown;
+}
+
+#label-2::before {
+	background-color: black;
+	color: red;
+	content: '*중요*';
+}
+
+.korean-1::first-letter {
+	background-color: black;
+}
+.korean-2::first-line {
+	background-color: black;
+}

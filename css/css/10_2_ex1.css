@@ -1,0 +1,28 @@
+[target] {
+	color: rgb(9, 255, 0);
+}
+
+[target=daum] {
+	color: blue;
+}
+
+/* [class~=att_class] {
+	color: blueviolet;
+} */
+
+
+[class|=att] {
+	color: brown;
+}
+
+[class^=co] {
+	color: #d95881;
+}
+
+[class$=kk1] {
+	color: grey;
+}
+
+/* [class*=att_class] {
+	color: rgb(230, 230, 20);
+} */

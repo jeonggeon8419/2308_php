@@ -1,4 +1,10 @@
-ul, li {
+ul li{
+	background-color: aqua;
+	float: left;
 	list-style: none;
-	
 }
+
+a:hover{background-color: rgb(6, 6, 6);
+
+}
+a{text-decoration: none;}

@@ -1,0 +1,15 @@
+header div span {
+	color: aqua;
+}
+
+header>span {
+	color: red;
+}
+
+main span+p {
+	color: blue;
+}
+
+footer span~p {
+	color: blueviolet;
+}
