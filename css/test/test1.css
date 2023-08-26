@@ -1,0 +1,30 @@
+ul {
+	list-style: none;
+}
+
+li {
+	float: left;
+	border-right: 1px solid #000;
+	width: 100px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	background-color: #a39e9e;
+}
+
+li:hover {
+	background-color: #000;
+}
+
+a {
+	text-decoration: none;
+}
+
+.nav-1 li:last-child {
+	border-right: none;
+}
+
+.nav-1 li:last-child a:hover {
+	color: #a39e9e;
+
+}

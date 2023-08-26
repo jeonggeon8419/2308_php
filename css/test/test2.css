@@ -1,0 +1,38 @@
+.container {
+	width: 1200px;
+	margin: 20px auto;
+}
+
+header {
+	width: 1200px;
+	height: 120px;
+	background-color: beige;
+}
+
+.left {
+	width: 120px;
+	height: 600px;
+	background-color: bisque;
+	float: left;
+}
+
+section {
+	width: 800px;
+	height: 600px;
+	background-color: aqua;
+	float: left;
+}
+
+.right {
+	width: 280px;
+	height: 600px;
+	float: left;
+	background-color: bisque;
+}
+
+footer {
+	width: auto;
+	height: 100px;
+	clear: left;
+	background-color: blanchedalmond;
+}
