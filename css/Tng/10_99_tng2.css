@@ -1,0 +1,65 @@
+fieldset {
+	background-image: url(../img/억울이.jpeg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin: 20px auto;
+	border: 1px solid;
+	width: 600px;
+	height: 450px;
+}
+
+	input, textarea {
+		background-color: transparent;
+	}
+	
+
+h1 {
+	color: blue;
+}
+
+#name:focus, #age:focus, #text:focus {
+	outline: none;
+	border-color: red;
+}
+
+#na::before {
+	color: red;
+	content: '*';
+}
+#ag::before {
+	color: red;
+	content: '*';
+}
+#sex::before {
+	color: red;
+	content: '*';
+}
+
+
+input:checked + label {
+	color: red;
+}
+
+#text {
+vertical-align: top;
+}
+
+.send {
+	float: left;
+	margin: 0;
+}
+
+#submit {
+	position: relative;
+}
+
+#submit:hover::after {
+	content: '내용을 확인해 주세요.';
+	background-color: black;
+	color: white;
+	width: 300px;
+	font-size: 20px;
+	position: absolute;
+	top:0px;
+	left:56px;	
+}
