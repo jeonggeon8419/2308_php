@@ -219,17 +219,29 @@ FROM (
 -- 1. 직책테이블의 모든 정보를 조회해주세요
 SELECT * FROM titles;
 -- 2. 급여가 60,000 이하인 사원의 사번을 조회해 주세요
-SELECT emp_no FROM salaries WHERE salary <= 60000;
+SELECT emp_no 
+FROM salaries
+WHERE salary <= 60000;
 -- 3. 급여가 60,000에서 70,000인 사원의 사번을 조회해 주세요
-SELECT emp_no FROM salaries WHERE salary >= 60000 AND salary <=70000;
+SELECT emp_no 
+FROM salaries 
+WHERE salary >= 60000 AND salary <=70000;
 -- 4. 사원번호가 10001, 10005인 사원의 모든 정보를 조회해 주세요.
-SELECT * FROM employees WHERE emp_no = 10001 or emp_no = 10005;
+SELECT * 
+FROM employees 
+WHERE emp_no = 10001 or emp_no = 10005;
 -- 5. 직급명에 "Engineer"가 포함된 사원의 사번과 직급을 조회해 주세요
-SELECT emp_no, title FROM titles WHERE title = 'Engineer';
+SELECT emp_no, title 
+FROM titles 
+WHERE title LIKE ('%Engineer%');
 -- 6. 사원 이름을 오름차순으로 정렬해서 조회해 주세요
-SELECT last_name FROM employees ORDER BY last_name asc; 
+SELECT first_name 
+FROM employees
+ORDER BY first_name asc; 
 -- 7. 사원별 급여의 평균을 조회해 주세요.
-SELECT avg(salary) FROM salaries GROUP BY emp_no;
+SELECT avg(salary) 
+FROM salaries 
+GROUP BY emp_no;
 -- 8. 사원별 급여의 평균이 30,000 ~ 50,000인, 사원번호와 평균급여를 조회해 주세요.
 SELECT AVG(salary), emp_no 
 FROM salaries 
@@ -246,7 +258,43 @@ WHERE emp_no IN (
 SELECT emp_no
 FROM titles
 WHERE to_date >= 20230904 AND title = 'Senior Engineer');
-Senior Enigneer
-Senior Engineer
 
 
+-- insert의 기본구조
+-- insert into 테이블명 [ (속성1, 속성2)]
+-- values (속성값1, 속성값2)
+
+-- 500000 신규회원
+INSERT INTO employees (
+	emp_no
+	, birth_date
+	, first_name
+	, last_name
+	, gender
+	, hire_date
+)
+VALUES (
+	500000
+	,NOW()
+	,'jeong'
+	,'geon'
+	,'M'
+	,NOW()
+);
+
+-- 500000번 사원의 급여 데이터를 삽입해 주세요
+INSERT INTO salaries (
+	emp_no
+	,salary
+	,from_date
+	,to_date
+)
+VALUES (
+	500000
+	,6000000
+	,NOW()
+	,99990101
+);
+
+SELECT * FROM employees WHERE emp_no = 500000;
+SELECT * FROM salaries WHERE emp_no = 500000;
