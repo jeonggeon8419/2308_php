@@ -296,5 +296,37 @@ VALUES (
 	,99990101
 );
 
+-- 500000만번 사원의 소속 부서 데이터를 삽입해 주세요.
+INSERT INTO dept_emp (
+	emp_no 
+	,dept_no
+	,from_date
+	,to_date
+)
+VALUES (
+	500000
+	,'d005'
+	,NOW()
+	,NOW()
+);
+
+-- 500000번 사원의 직책 데이터를 삽입해 주세요.
+INSERT INTO titles (
+	emp_no
+	,title
+	,from_date
+	,to_date
+)
+VALUES (
+	500000
+	,'ceo'
+	,NOW()
+	,NOW()
+);
+
+SELECT MAX(salary) FROM salaries;
 SELECT * FROM employees WHERE emp_no = 500000;
-SELECT * FROM salaries WHERE emp_no = 500000;
+SELECT * FROM dept_emp WHERE emp_no = 500000;
+SELECT * FROM titles WHERE emp_no = 500000;
+
+
