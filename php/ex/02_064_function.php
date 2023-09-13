@@ -72,16 +72,27 @@ function my_sum2($a, $b) {
 
 
 
-function my_reverse($i) {
-	if($i === 0) {
-		return 0;
-	}
-	else return $i + my_reverse($i-1);
-}
-echo my_reverse(2);
+// function my_reverse($i) {
+// 	if($i === 0) {
+// 		return 0;
+// 	}
+// 	else return $i + my_reverse($i-1);
+// }
+// echo my_reverse(2);
 
 // 숫자로 이루어진 문자열을 하나 받습니다
 // 이 문자열의 모든 숫자를 더해주세요
 // 예) "3421"일 경우, 3+4+2+1해서 10이 리턴 되는 함수
+
+$str = "34215";
+function my_test(string $str) {
+	$len = mb_strlen($str);
+	$sum = 0;
+	for($idx = 0; $idx <= $len -1; $idx++) {
+		$sum += (int)mb_substr($str, $idx, 1);
+	}
+	return $sum;
+}
+echo my_test($str);
 
 
