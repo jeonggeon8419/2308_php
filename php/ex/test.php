@@ -30,8 +30,8 @@ $obj_conn = new PDO($db_dns, $db_user, $db_pw, $db_options);
 
 //  $sql = " INSERT INTO "
 //         ." employees "
-//         ." (emp_no, birth_date, first_name, last_name, gender, hire_date) "
-//         ." VALUES (:emp_no, birth_date, :first_name, :last_name, gender, hire_date) "
+//         ." ( emp_no, birth_date, first_name, last_name, gender, hire_date ) "
+//         ." VALUES ( :emp_no, birth_date, :first_name, :last_name, gender, hire_date ) "
 //         ;
 
 //  // update, delete, insert into 결과 받아본다
@@ -51,43 +51,67 @@ $obj_conn = new PDO($db_dns, $db_user, $db_pw, $db_options);
 // var_dump($result);
 
 
-// $sql = " UPDATE " 
-//         ." employees "
-//         ." SET "
-//         ." :first_name => "둘리"
-//             , :last_name" => "호이" "
-//         ." WHERE " emp_no = "50004";
+$sql =
+    " UPDATE employees "
+    ." SET first_name = :first_name "
+    ." ,last_name = :last_name "
+    ." WHERE " 
+    ." emp_no = 500004 ";
+
+
+$arr_ps = [
+    ":first_name" => "두르리"
+    ,":last_name" => "호이"
+    ,":emp_no" => 500004
+    ];
+$stmt = $conn->prepare($sql);
+$result = $stmt->execute($arr_ps);
+
+$conn -> commit();
+
+$sql = " SELECT " 
+        ."   * "
+        ." FROM "
+        ." employees "
+        ." WHERE "
+        ." emp_no = :emp_no "
+        ;
+$arr_ps = [
+    ":emp_no" => 500004
+];
+
+
+$stmt = $conn->prepare($sql);
+$stmt->execute($arr_ps);
+$resert = $stmt->fetchall();
+
+print_r($resert);
+
+$conn = null;
+
+var_dump($result);
+
+$conn = null;
 
 
 // $obj_conn = null;
 
-$sql = 
-    " INSERT INTO employees ( "
-    ."        emp_no " 
-    ."        ,birth_date "
-    ."        ,first_name "
-    ."        ,last_name "
-    ."        ,gender "
-    ."        ,hire_date "
-    ."         ) "
-    ." VALUES ( "
-    ."            :emp_no "
-    ."            ,:birth_date "
-    ."            ,:first_name "
-    ."            ,:last_name "
-    ."            ,:gender "
-    ."            ,:hire_date "
-    ."         ) ";
 
-    $arr_ps = [
-        ":emp_no" => 500003
-        ,":birth_date" => 19960106
-        ,":first_name" => "myeongho"
-        ,":last_name" => "jung"
-        ,":gender" => "M"
-        ,":hire_date" => 20230918
-    ];
+$sql = " DELETE "
+        ." FROM " 
+        ." employees "
+        ." WHERE "
+        ."  emp_no = :emp_no; "
+        ;
+$arr_ps = [
+    ":emp_no" => 500004
+];
 
+$stmt = $conn->prepare($sql);
+$result = $stmt->execute($arr_ps);
+$res_cnt = $stmt->rowCount();
+
+var_dump($res_cnt);
     $stmt = $obj_conn -> prepare($sql);
     $result = $stmt -> execute($arr_ps); // 
     $obj_conn->commit();
