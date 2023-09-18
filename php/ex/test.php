@@ -6,34 +6,49 @@
 // 2. 자신의 이름을 "둘리", 성을 "호이"로 변경해주세요.
 // 3. 자신의 정보를 출력
 // 4. 자신의 정보를 삭제해주세요
-require_once("./04_107_fnc_db_connect.php");
+$db_host         = "localhost"; // host 127.0.0.1 === localhost
+$db_user         = "root"; // user
+$db_pw           = "php504"; // password
+$db_name         = "employees"; // DBname
+$db_charset      = "utf8mb4"; // charset
+$db_dns          = "mysql:host=".$db_host.";dbname=".$db_name.";charset".$db_charset;
 
-$obj_conn = null;
-my_db_conn($obj_conn);
+$db_options = [
+    //DB의 Prepared Statement 기능을 사용하도록 설정
+    PDO::ATTR_EMULATE_PREPARES          => false
+    // PDO Exception을 Throws하도록 설정
+    ,PDO::ATTR_ERRMODE                  => PDO::ERRMODE_EXCEPTION
+    // 연상배열로 Fetch를 하도록 설정
+    ,PDO::ATTR_DEFAULT_FETCH_MODE       => PDO::FETCH_ASSOC
+];
+
+// PDO Class로 DB 연동
+$obj_conn = new PDO($db_dns, $db_user, $db_pw, $db_options);
+
 
  
 
- $sql = " INSERT INTO "
-        ." employees "
-        ." (emp_no, birth_date, first_name, last_name, gender, hire_date) "
-        ." VALUES (:emp_no, birth_date, :first_name, :last_name, gender, hire_date) "
-        ;
+//  $sql = " INSERT INTO "
+//         ." employees "
+//         ." (emp_no, birth_date, first_name, last_name, gender, hire_date) "
+//         ." VALUES (:emp_no, birth_date, :first_name, :last_name, gender, hire_date) "
+//         ;
 
- // update, delete, insert into 결과 받아본다
-$arr_ps = [
-     ":emp_no" => "50004"
-    ,"birth_date" => "19920703"
-    ,":first_name" => "건"
-    ,":last_name" => "정"
-    ,":gender" => "M"
-    ,":hire_date" => "20000703"
-];
+//  // update, delete, insert into 결과 받아본다
+// $arr_ps = [
+//      ":emp_no" => 500004
+//     ,":birth_date" => 19920703
+//     ,":first_name" => "건"
+//     ,":last_name" => "정"
+//     ,":gender" => "M"
+//     ,":hire_date" => 20000703
+// ];
 
-$stmt   = $obj_conn->prepare($sql);
-$result = $stmt->execute($arr_ps);
-$obj_conn->commit(); //커밋
+// $stmt   = $obj_conn->prepare($sql);
+// $result = $stmt->execute($arr_ps);
+// $obj_conn->commit(); //커밋
 
-var_dump($result);
+// var_dump($result);
 
 
 // $sql = " UPDATE " 
@@ -45,3 +60,34 @@ var_dump($result);
 
 
 // $obj_conn = null;
+
+$sql = 
+    " INSERT INTO employees ( "
+    ."        emp_no " 
+    ."        ,birth_date "
+    ."        ,first_name "
+    ."        ,last_name "
+    ."        ,gender "
+    ."        ,hire_date "
+    ."         ) "
+    ." VALUES ( "
+    ."            :emp_no "
+    ."            ,:birth_date "
+    ."            ,:first_name "
+    ."            ,:last_name "
+    ."            ,:gender "
+    ."            ,:hire_date "
+    ."         ) ";
+
+    $arr_ps = [
+        ":emp_no" => 500003
+        ,":birth_date" => 19960106
+        ,":first_name" => "myeongho"
+        ,":last_name" => "jung"
+        ,":gender" => "M"
+        ,":hire_date" => 20230918
+    ];
+
+    $stmt = $obj_conn -> prepare($sql);
+    $result = $stmt -> execute($arr_ps); // 
+    $obj_conn->commit();
