@@ -28,27 +28,27 @@ $obj_conn = new PDO($db_dns, $db_user, $db_pw, $db_options);
 
  
 
-//  $sql = " INSERT INTO "
-//         ." employees "
-//         ." ( emp_no, birth_date, first_name, last_name, gender, hire_date ) "
-//         ." VALUES ( :emp_no, birth_date, :first_name, :last_name, gender, hire_date ) "
-//         ;
+ $sql = " INSERT INTO "
+        ." employees "
+        ." ( emp_no, birth_date, first_name, last_name, gender, hire_date ) "
+        ." VALUES ( :emp_no, birth_date, :first_name, :last_name, gender, hire_date ) "
+        ;
 
-//  // update, delete, insert into 결과 받아본다
-// $arr_ps = [
-//      ":emp_no" => 500004
-//     ,":birth_date" => 19920703
-//     ,":first_name" => "건"
-//     ,":last_name" => "정"
-//     ,":gender" => "M"
-//     ,":hire_date" => 20000703
-// ];
+ // update, delete, insert into 결과 받아본다
+$arr_ps = [
+     ":emp_no" => 500004
+    ,":birth_date" => 19920703
+    ,":first_name" => "건"
+    ,":last_name" => "정"
+    ,":gender" => "M"
+    ,":hire_date" => 20000703
+];
 
-// $stmt   = $obj_conn->prepare($sql);
-// $result = $stmt->execute($arr_ps);
-// $obj_conn->commit(); //커밋
+$stmt   = $obj_conn->prepare($sql);
+$result = $stmt->execute($arr_ps);
+$obj_conn->commit(); //커밋
 
-// var_dump($result);
+var_dump($result);
 
 
 $sql =
