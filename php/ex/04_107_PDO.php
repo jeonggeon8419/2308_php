@@ -101,7 +101,7 @@ $sql = " SELECT "
 //     ." FROM "
 //     ." departments "
 //     ." WHERE "
-//     ." dept_no = :dept_no"
+//     ." dept_no = :dept_no "
 //     ;
 
 //     $arr_ps = [
