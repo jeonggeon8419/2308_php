@@ -47,11 +47,12 @@ $result = $stmt->fetchAll();
 
 print_r($result);
 
- $sql = " INSERT INTO titles "
+$learn = null;
+db_conn($learn);
+
+$sql = " INSERT INTO titles "
         ." ( emp_no, title, from_date, to_date  ) "
-        ." VALUES ( :emp_no, :title, :from_date, :to_date ) "
-        ." WHERE "
-        ." from_date >= now() "
+        ." VALUES ( :emp_no, :title, now(), :to_date ) "
         ;
 
  
@@ -61,8 +62,8 @@ $arr_ps = [
     ,":to_date" => 99990101
 ];
 
- $stmt   = $obj_conn->prepare($sql);
+ $stmt   = $learn->prepare($sql);
  $result = $stmt->execute($arr_ps);
- $obj_conn->commit(); //커밋
+ $learn->commit(); //커밋
 
  var_dump($result);
