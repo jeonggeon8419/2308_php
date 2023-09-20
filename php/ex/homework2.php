@@ -44,11 +44,8 @@ $sql = " SELECT "
 $stmt = $learn->prepare($sql); // 쿼리를 셋팅하는 부분
 $stmt->execute($arr_ps);      // 실행
 $result = $stmt->fetchAll();
-
 print_r($result);
 
-$learn = null;
-db_conn($learn);
 
 $sql = " INSERT INTO titles "
         ." ( emp_no, title, from_date, to_date  ) "
