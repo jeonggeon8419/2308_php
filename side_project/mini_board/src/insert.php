@@ -27,7 +27,7 @@ if($http_method === "POST") {
     exit;
     } catch(Exception $e) {
         $conn->rollBack();
-        echo $e->getMessage(); //
+        echo $e->getMessage(); // Exception 메세지 출력
         exit;
     } finally {
         db_destroy_conn($conn); //DB파기
@@ -53,12 +53,11 @@ if($http_method === "POST") {
     <label for="title">제목</label>
     <input type="text" name="title" id="title">
     <br>
-    <label for="content">내용</label>
+    <div class="content"><label for="content">내용</label></div>
 	<textarea name="content" id="content" cols="30" rows="10"></textarea>
     <br>
     <button type="submit">작성</button>
-    <a href="/mini_board/src/list.php">취소</a>
-    </form>
-    
+    <a href="/mini_board/src/list.php">작성 취소</a>
+    </form>  
 </body>
 </html>
