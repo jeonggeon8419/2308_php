@@ -184,4 +184,36 @@ function db_select_boards_id(&$conn,&$arr_param) {
     }
 }
 
+//-------------------------------------------------
+// 함수명   : db_update_boards_id
+// 기능     : boards 레코드 작성
+// 파라미터 : PDO       &$conn
+// 파라미터 : array     &$arr_param 쿼리 작성용 배열
+// 리턴     : boolean
+//-------------------------------------------------
+function db_update_boards_id(&$conn, &$arr_param) {
+        $sql =
+        " UPDATE boards  "
+        ." SET "
+        ." title = :title "
+        ." ,content = :content "
+        ." WHERE "
+        ." id = :id "
+        ;
+        $arr_ps = [
+             ":id"    => $arr_param["id"]
+            ,":title" => $arr_param["title"]
+            ,":content" => $arr_param["content"]
+        ];
+    try {
+        $stmt = $conn->prepare($sql);
+        $result = $stmt->execute($arr_ps);
+        return $result; // 정상 :결과 리턴
+    } catch(Exception $e) {
+        echo $e->getMessage();
+        return false; // 예외발생 : false 리턴
+    }
+}
+
+
 ?>

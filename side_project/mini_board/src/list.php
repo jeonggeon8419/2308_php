@@ -84,7 +84,7 @@ try {
     ?>
     <main>
         <table>
-            <colgroup>
+        <colgroup>
             <col width="15%">
             <col width="50%">
             <col width="25%">
@@ -112,7 +112,7 @@ try {
             <a class="page-btn" href="/mini_board/src/list.php/?page=<?php echo $prev_page_num ?>">☚</a>
             <?php
                 for($i = 1; $i <= $max_page_num; $i++) {
-
+                    
                     ?>
              <a class="page-btn" href="/mini_board/src/list.php/?page=<?php echo $i; ?>"><?php echo "[ $i ]"; ?></a>
              <?php
