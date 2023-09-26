@@ -24,17 +24,26 @@ header h1 {
 
 table {
     border-collapse: collapse;
-    width: 800px;
-    height: 300px;
+    width: 900px;
+    height: 400px;
     margin: 30px auto;
     font-size: 1.2rem;
+    text-align: center;
 }
-td {
+
+textarea {
+    border-bottom:;
+}
+
+tr>td {
     border-bottom: 1px solid #000;
     text-align: center;
 }
 th {
     font-size: x-large;
+}
+td {
+    border-style: inherit;
 }
 
 .table-title {
@@ -71,4 +80,12 @@ a {
     padding: 10px;
 }
 
+.bt {
+    /* border-style: inherit; */
+    display: inline; 
+    text-decoration: none;
+    text-align: center;
+    line-height: 20px;
+    
+}
 

@@ -102,8 +102,10 @@ try {
                 </td>
             </tr>
         </table>
-        <button type="submit">수정 완료</button>
-        <a href="/mini_board/src/detail.php/?id=<?php echo $id; ?>&page=<?php echo $page; ?>">수정 취소</a>
+        <section>
+            <td class="bt"><button type="submit">수정 완료</button></td>
+            <td class="bt"><a href="/mini_board/src/detail.php/?id=<?php echo $id; ?>&page=<?php echo $page; ?>">수정 취소</a></td>
+        </section>   
     </form>
 </body>
 </html>

@@ -77,8 +77,10 @@ $page = $_GET["page"];
             <td><?php echo $item["create_at"]; ?></td>
         </tr>
     </table>
-    <a href="/mini_board/src/update.php/?id=<?php echo $id; ?>&page=<?php echo $page; ?>">수정 페이지</a>
-    <a href="/mini_board/src/list.php/?page=<?php echo $page; ?>">취소</a>
-    <a href="">삭제</a>
+    <section>
+    <td class="bt"><a href="/mini_board/src/update.php/?id=<?php echo $id; ?>&page=<?php echo $page; ?>">수정 페이지</a></td>
+    <td class="bt"><a href="/mini_board/src/list.php/?page=<?php echo $page; ?>">취소</a></td>
+    <td class="bt"><a href="/mini_board/src/delete.php/?id=<?php echo $id; ?>&page=<?php echo $page; ?>">삭제</a></td>
+    </section>
 </body>
 </html>

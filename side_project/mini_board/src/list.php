@@ -84,7 +84,7 @@ try {
     ?>
     <main>
         <table>
-        <colgroup>
+            <colgroup>
             <col width="15%">
             <col width="50%">
             <col width="25%">
