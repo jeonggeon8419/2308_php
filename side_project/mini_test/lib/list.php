@@ -1,6 +1,6 @@
 <?php
-// define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/mini.test/lib/");
-// require_once(ROOT."lib/list.php");
+define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/mini.test/lib/");
+require_once(ROOT."lib/list.php");
 ?> 
 
 
