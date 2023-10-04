@@ -103,7 +103,7 @@ try {
             </tr>
         </table>
         <section>
-            <td class="bt"><button type="submit">수정 완료</button></td>
+            <td class="bt"><button class="btn" type="submit">수정 완료</button></td>
             <td class="bt"><a href="/mini_board/src/detail.php/?id=<?php echo $id; ?>&page=<?php echo $page; ?>">수정 취소</a></td>
         </section>   
     </form>

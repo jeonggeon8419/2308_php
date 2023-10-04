@@ -98,4 +98,15 @@ a {
 
 .btn {
     width: 80px;
+    height: 32px;
+}
+
+textarea {
+    background-color: transparent;
+    border-color: red;
+}
+
+input {
+    border-color: red;
+    background-color: transparent;
 }
