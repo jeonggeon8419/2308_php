@@ -59,6 +59,7 @@ $page = $_GET["page"];
     <?php
         require_once(FILE_HEADER);
     ?>
+<main>
     <table>
         <tr>
             <th>글 번호</th>
@@ -82,5 +83,6 @@ $page = $_GET["page"];
     <td class="bt"><a href="/mini_board/src/list.php/?page=<?php echo $page; ?>">취소</a></td>
     <td class="bt"><a href="/mini_board/src/delete.php/?id=<?php echo $id; ?>&page=<?php echo $page; ?>">삭제</a></td>
     </section>
+</main>
 </body>
 </html>
