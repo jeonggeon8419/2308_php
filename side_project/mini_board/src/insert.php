@@ -53,7 +53,7 @@ if($http_method === "POST") {
     <label for="title">제목</label>
     <input type="text" name="title" id="title">
     <br>
-    <div class="content"><label for="content">내용</label></div>
+    <div><label for="content">내용</label></div>
 	<textarea name="content" id="content" cols="30" rows="10"></textarea>
     <br>
     <button class="btn" type="submit">작성</button>

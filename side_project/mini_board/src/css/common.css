@@ -87,17 +87,15 @@ a {
     color: #fff;
 }
 
-.content {
-    padding: 10px;
-}
 
 .bt {
+    width: 20px;
     display: inline; 
     text-decoration: none;
     text-align: center;
     line-height: 20px; 
 }
+
 .btn {
     width: 80px;
 }
-
