@@ -56,7 +56,7 @@ if($http_method === "POST") {
     <div class="content"><label for="content">내용</label></div>
 	<textarea name="content" id="content" cols="30" rows="10"></textarea>
     <br>
-    <button type="submit">작성</button>
+    <button class="btn" type="submit">작성</button>
     <a href="/mini_board/src/list.php">작성 취소</a>
     </form>  
 </body>

@@ -97,4 +97,7 @@ a {
     text-align: center;
     line-height: 20px; 
 }
+.btn {
+    width: 80px;
+}
 
