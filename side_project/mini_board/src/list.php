@@ -109,7 +109,7 @@ try {
             <?php    } ?>
         </table>
         <section>
-            <a class="page-btn" href="/mini_board/src/list.php/?page=<?php echo $prev_page_num ?>">☚</a>
+            <a class="page-btn" href="/mini_board/src/list.php/?page=<?php echo $prev_page_num ?>"><<</a>
             <?php
                 for($i = 1; $i <= $max_page_num; $i++) {
                     
@@ -119,7 +119,7 @@ try {
                     
                 }
                 ?>
-            <a class="page-btn" href="/mini_board/src/list.php/?page=<?php echo $next_page_num ?>">☛</a>
+            <a class="page-btn" href="/mini_board/src/list.php/?page=<?php echo $next_page_num ?>">>></a>
             <a class="page-btn" href="/mini_board/src/insert.php">글✎</a> 
         </section>
     </main>
