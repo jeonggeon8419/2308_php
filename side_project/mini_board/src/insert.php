@@ -77,10 +77,17 @@ if($http_method === "POST") {
         ?>
     <form action="/mini_board/src/insert.php" method="post">
     <div><label for="title"><h2>제목</h2></label></div>
+<<<<<<< HEAD
     <input type="text" name="title" id="title" value="<?php echo $title ?>">
     <br>
     <div><label for="content"><h2>내용</h2></label></div>
 	<textarea name="content" id="content" cols="100" rows="40"><?php echo $content ?></textarea>
+=======
+    <input type="text" name="title" id="title">
+    <br>
+    <div><label for="content"><h2>내용</h2></label></div>
+	<textarea name="content" id="content" cols="100" rows="40"></textarea>
+>>>>>>> ea6569302b27660e71e1dfd634b73be19bc65113
     <br>
     <button class="btn" type="submit">작성</button>
     <a href="/mini_board/src/list.php">작성 취소</a>
