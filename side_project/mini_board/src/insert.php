@@ -1,38 +1,57 @@
 <?php
 define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/mini_board/src/");
 define("FILE_HEADER", ROOT."header.php");
+define("ERROR_MSG_PARAM", "%s은 필수 입력 사항입니다");
 require_once(ROOT."lib/lib_db.php");
 
 // post로 request가 왔을 때 처리
+$conn = null;
 $http_method = $_SERVER["REQUEST_METHOD"];
+$arr_err_msg = []; // 에러 메세지 저장용
+$title = "";
+$content = "";
 if($http_method === "POST") {
     try {
         $arr_post = $_POST;
         $conn = null; // DB Connection 변수
-
-    //DB 접속
-    if(!my_db_conn($conn)) {
-            throw new Exception("DB Error : PDO instance");        
+        $title = isset($_POST["title"]) ? trim($_POST["title"]) : ""; // title 셋팅
+        $content = isset($_POST["content"]) ? trim($_POST["content"]) : ""; // content 셋팅
+        
+        if($title === "") {
+            $arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "제목");
         }
-        $conn->beginTransaction();
-        // insert
-    if(!db_insert_boards($conn, $arr_post)) {
-        // DB Insert 에러
-            throw new Exception("DB Error : insert Boards");       
+        if($content === "") {
+            $arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "내용");
         }
-    $conn->commit();
 
-    // 리스트 페이지 이동
-    header("Location: list.php");
-    exit;
+        if(count($arr_err_msg) === 0) {
+            //DB 접속
+            if(!my_db_conn($conn)) {
+                throw new Exception("DB Error : PDO instance");
+            }
+            $conn->beginTransaction();
+                // insert
+            if(!db_insert_boards($conn, $arr_post)) {
+                // DB Insert 에러
+                throw new Exception("DB Error : insert Boards");       
+            }
+            $conn->commit();
+            // 리스트 페이지 이동
+            header("Location: list.php");
+            exit;
+        }
     } catch(Exception $e) {
-        $conn->rollBack();
-        echo $e->getMessage(); // Exception 메세지 출력
+        if($conn !== null){
+            $conn->rollBack();
+        }
+        //echo $e->getMessage(); // 예외발생 메세지 출력
+        header("Location: error.php/?err_msg={$e->getMessage()}");
         exit;
     } finally {
         db_destroy_conn($conn); //DB파기
     }
 }
+
 
 
 ?>
@@ -49,12 +68,19 @@ if($http_method === "POST") {
     <?php
         require_once(FILE_HEADER);
     ?>
+        <?php 
+           foreach($arr_err_msg as $val) {
+        ?>
+                <p><?php echo $val ?></p>
+        <?php
+           }
+        ?>
     <form action="/mini_board/src/insert.php" method="post">
-    <label for="title">제목</label>
-    <input type="text" name="title" id="title">
+    <div><label for="title"><h2>제목</h2></label></div>
+    <input type="text" name="title" id="title" value="<?php echo $title ?>">
     <br>
-    <div><label for="content">내용</label></div>
-	<textarea name="content" id="content" cols="30" rows="10"></textarea>
+    <div><label for="content"><h2>내용</h2></label></div>
+	<textarea name="content" id="content" cols="100" rows="40"><?php echo $content ?></textarea>
     <br>
     <button class="btn" type="submit">작성</button>
     <a href="/mini_board/src/list.php">작성 취소</a>

@@ -53,14 +53,15 @@ try {
     // 게시글 리스트 조회 
     $result  = db_select_boards_paging($conn, $arr_param);
 
-    if(!$result){
-        echo "DB Error : SELECT boards";
-        exit;
+    if($result === false){
+      var_dump($result);
+      throw new Exception("DB Error : Select boards paging");
     }
         
 
     } catch(Exception $e) {
-        echo $e->getMessage(); // 예외발생 메세지 출력
+        //echo $e->getMessage(); // 예외발생 메세지 출력
+        header("Location: error.php/?err_msg={$e->getMessage()}");
         exit; // 처리 종료
     } finally {
         db_destroy_conn($conn); //DB 파기
@@ -109,7 +110,7 @@ try {
             <?php    } ?>
         </table>
         <section>
-            <a class="page-btn" href="/mini_board/src/list.php/?page=<?php echo $prev_page_num ?>">☚</a>
+            <a class="page-btn" href="/mini_board/src/list.php/?page=<?php echo $prev_page_num ?>"><<</a>
             <?php
                 for($i = 1; $i <= $max_page_num; $i++) {
                     
@@ -119,7 +120,7 @@ try {
                     
                 }
                 ?>
-            <a class="page-btn" href="/mini_board/src/list.php/?page=<?php echo $next_page_num ?>">☛</a>
+            <a class="page-btn" href="/mini_board/src/list.php/?page=<?php echo $next_page_num ?>">>></a>
             <a class="page-btn" href="/mini_board/src/insert.php">글✎</a> 
         </section>
     </main>

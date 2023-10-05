@@ -124,7 +124,7 @@
     <section>
         <form action="/mini_board/src/delete.php" method="post">
             <input type="hidden" name="id" value="<?php echo $id; ?>">
-            <button type="submit">삭제</button>
+            <button class="btn" type="submit">삭제</button>
             <a href="/mini_board/src/detail.php/?id=<?php echo $id; ?>&page=<?php echo $page; ?>">취소</a>
         </form>
     </section>
