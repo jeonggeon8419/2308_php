@@ -20,8 +20,8 @@ $err_msg = isset($_GET["err_msg"]) ? $_GET["err_msg"] : "";
         require_once(FILE_HEADER);
     ?>
     <main class="container">
-        <p>좆 같이만 참으소</p>
-        <p>나도 좆같소</p>
+        <p>에러페이지입니다</p>
+        <p>없는 게시판입니다</p>
         <p><?php echo $err_msg ?></p>
         <br>
         <a href="/mini_board/src/list.php">메인으로 이동</a>
