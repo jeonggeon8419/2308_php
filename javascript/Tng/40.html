@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		#outdiv { 
+  height: 100px;
+  width: 100px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+		}
+		#indiv {
+		height: 50px;
+		width: 50px;
+		display: inline-block;
+		}
+	</style>
+</head>
+<body>
+	<button onclick="alert('안녕하세요. \n숨어있는 div를 찾아보세요'); " id="btn">버튼</button>
+	<br><br>
+	<div id="outdiv">
+		<div id="indiv"></div>
+	</div>
+	<script src="./40.js"></script>
+</body>
+</html>

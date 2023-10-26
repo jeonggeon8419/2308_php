@@ -54,3 +54,47 @@ TITLE.style.color = 'red';
 // classList : 클래스로 스타일 추가
 // TITLE.classList.add('class1','class2','class3');
 // TITLE.classList.remove('class', 'class3');
+
+// --------------------
+// 5. 새로운 요소 생성
+// --------------------
+// 요소 만들기
+const LI = document.createElement('li');
+LI.innerHTML = "장기";
+
+// 삽입할 부모 요소 접근
+const UL = document.querySelector('#ul');
+
+// 부모요소의 가장 마지막 위치에 삽입
+UL.appendChild(LI);
+
+// 요소를 특정 위치에 삽입하는 방법
+// const SPACE = document.querySelector('li:nth-child(3)');
+
+// UL.insertBefore(LI, SPACE);
+
+// 요소 지우는 방법
+// LI.remove();
+
+// 1. 사과게임 위에 장기를 넣어주세요.
+
+const SPACE1 = document.querySelector('li:nth-child(5)');
+UL.insertBefore(LI, SPACE1);
+
+// 2. 어메이징브럭에 베이지 배경색을 넣어주세요
+
+const SPACE2 = document.querySelector('li:last-child');
+    SPACE2.style.backgroundColor = '#f5f5dc';
+
+// 3. 리스트에서 짝수는 빨간글씨, 홀수는 파랑색글씨로 만들어주세요.
+
+const elements = document.querySelectorAll('li');
+for (let i = 0; i < elements.length; i++) {
+	if (i % 2 === 0) {
+		elements[i].style.color = 'red';
+	} else {
+		elements[i].style.color = 'blue';
+	}
+}
+
+	
