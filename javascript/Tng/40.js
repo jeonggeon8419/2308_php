@@ -11,7 +11,7 @@
 
 const DIV = document.querySelector('#outdiv');
 DIV.addEventListener('mouseenter', () => {
-	 alert('도끼도끼'); 
+	 alert('두근두근'); 
 });
 
 const DIV1 = document.querySelector('#indiv');
