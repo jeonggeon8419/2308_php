@@ -32,19 +32,49 @@
 
 */
 
+// http://picsum.photos/v2/list?page=28&limit=5
 const MY_URL = "http://picsum.photos/v2/list?page=28&limit=5";
+const BTN_API = document.querySelector('#btn-api');
+BTN_API.addEventListener('click',my_fetch);
 
-fetch(MY_URL)
-.then( response => response.json() )
-.then( data => makeImg(data)  )
-.catch( error => console.log(error) )
+function my_fetch() {
+	const INPUT_URL = document.querySelector('#input-url');
 
-function  makeImg(data) {
+fetch(INPUT_URL.value.trim())
+.then( response => {
+	if( response.status >= 200 && response.status < 300){
+		return response.json();
+	} else {
+		throw new Error('에러에러');
+	}
+})
+	.then( data => makeImg(data) )
+	.catch(error => console.log(error));
+}
+
+function makeImg(data) {
 	data.forEach( item => {
 		const NEW_IMG = document.createElement('img');
+		const DIV_IMG = document.querySelector('#div-img');
+
 		NEW_IMG.setAttribute('src', item.download_url);
 		NEW_IMG.style.width = '200px';
 		NEW_IMG.style.height = '200px';
-		document.body.appendChild(NEW_IMG);
-	});
-}
+		DIV_IMG.appendChild(NEW_IMG);
+	})
+	};
+
+	// document.addEventListener('DOMContentLoaded', function() {
+	// 	function resetAPI() {
+	// 		apiObject.reset();
+	// 	}
+	// 	document.getElementById('#reset').addEventListener('click', resetAPI);
+	// });
+	const BTN_del = document.querySelector('#reset');
+	BTN_del.addEventListener('click', remove_children );
+
+	function remove_children() {
+		const parent = document.getElementById('div-img');
+		parent.innerHTML = "";
+	}
+
