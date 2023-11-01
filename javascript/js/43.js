@@ -78,3 +78,21 @@ function makeImg(data) {
 		parent.innerHTML = "";
 	}
 
+
+
+	// fetch 2번쨰 아규먼트 셋팅 방법
+	function infiniyLoop() {
+		let apiurl = "http://192.168.0.82/03_insert.php"
+		let init = {
+			method: "POST"
+			,body: {
+				title:"dkdkdkdk"
+				,content: "dhdhdhdh"
+				,em_id: "2"
+			}
+			
+		};
+		fetch(apiurl, init)
+		.then( indata => console.log(indata))
+		.catch( error => console.log(error));
+	}
