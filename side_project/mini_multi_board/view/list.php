@@ -3,38 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./css/common.css">
+	<link rel="stylesheet" href="/view/css/common.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	
-	<title>질문게시판 페이지</title>
+	<title>자유게시판 페이지</title>
 </head>
 <body class="vh-100 vw-100">
-	<header>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<div class="container-fluid">
-			<a class="navbar-brand" href="#">미니보드</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-					게시판
-					</a>
-					<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-					<li><button class="dropdown-item" href="./free.html">자유 게시판</button></li>
-					<li><button class="dropdown-item" href="./question.html">질문 게시판</button></li>
-					</ul>
-				</li>
-				</ul>
-				<a href="./login.html" class="nav-link text-light" role="button">로그아웃</a>
-			</div>
-			</div>
-		</nav>
-	</header>
+	<?php require_once("view/inc/header.php"); ?>
+
 	<div class="text-center mb-5 mt-3">
-		<h1>질문게시판</h1>
+		<h1>자유게시판</h1>
 		<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 16 16" data-bs-toggle="modal" data-bs-target="#modalInsert">
 			<path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z"/>
 			<path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
@@ -48,7 +26,7 @@
 
 	<main>
 		<div class="card">
-			<img src="./img/ham.jpg" class="card-img-top" alt="...">
+			<img src="/view/img/ham.jpg" class="card-img-top" alt="...">
 			<div class="card-body">
 			  <h5 class="card-title">나는 귀염둥이</h5>
 			  <p class="card-text">나한테 반하지</p>
@@ -57,7 +35,7 @@
 			</div>
 		  </div>
 		<div class="card">
-			<img src="./img/ham.jpg" class="card-img-top" alt="...">
+			<img src="/view/img/ham.jpg" class="card-img-top" alt="...">
 			<div class="card-body">
 			  <h5 class="card-title">나는 귀염둥이</h5>
 			  <p class="card-text">나한테 반하지</p>
@@ -65,7 +43,7 @@
 			</div>
 		  </div>
 		<div class="card">
-			<img src="./img/ham.jpg" class="card-img-top" alt="...">
+			<img src="/view/img/ham.jpg" class="card-img-top" alt="...">
 			<div class="card-body">
 			  <h5 class="card-title">나는 귀염둥이</h5>
 			  <p class="card-text">나한테 반하지</p>
@@ -73,7 +51,7 @@
 			</div>
 		  </div>
 		<div class="card">
-			<img src="./img/ham.jpg" class="card-img-top" alt="...">
+			<img src="/view/img/ham.jpg" class="card-img-top" alt="...">
 			<div class="card-body">
 			  <h5 class="card-title">나는 귀염둥이</h5>
 			  <p class="card-text">나한테 반하지</p>
@@ -81,7 +59,7 @@
 			</div>
 		  </div>
 		<div class="card">
-			<img src="./img/ham.jpg" class="card-img-top" alt="...">
+			<img src="/view/img/ham.jpg" class="card-img-top" alt="...">
 			<div class="card-body">
 			  <h5 class="card-title">나는 귀염둥이</h5>
 			  <p class="card-text">나한테 반하지</p>
@@ -89,7 +67,7 @@
 			</div>
 		  </div>
 		<div class="card">
-			<img src="./img/ham.jpg" class="card-img-top" alt="...">
+			<img src="/view/img/ham.jpg" class="card-img-top" alt="...">
 			<div class="card-body">
 			  <h5 class="card-title">나는 귀염둥이</h5>
 			  <p class="card-text">나한테 반하지</p>
@@ -132,7 +110,7 @@
 			당신을 사랑해요 땡벌 당신을 좋아해요 땡벌
 			밉지만 당신을 너무 너무 
 			</span>
-			<img src="./img/bee.jpg" alt="">
+			<img src="/img/bee.jpg" alt="">
 		</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
@@ -164,6 +142,6 @@
 
 	<footer class="fixed-bottom bg-dark text-center text-light p-3">저작권</footer>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-	<script src="./JS/common.js"></script>
+	<script src="/view/js/common.js"></script>
 </body>
 </html>
