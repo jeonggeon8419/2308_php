@@ -25,7 +25,7 @@ class Router {
 			if($method === "GET") {
 				new UC("loginGet");
 			} else {
-				
+				new UC("loginPost");
 			}
 		} else if($url === "user/logout") {
 			if($method === "GET") {
