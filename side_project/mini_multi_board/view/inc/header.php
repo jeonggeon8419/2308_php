@@ -13,8 +13,15 @@
 							게시판
 							</a>
 							<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-								<li><button class="dropdown-item" href="./free.html">자유 게시판</button></li>
-								<li><button class="dropdown-item" href="./question.html">질문 게시판</button></li>
+								<?php 
+									foreach($this->arrBoardNameInfo as $item){
+								?>
+								<li>
+									<a class="dropdown-item" href="/board/list?b_type=<?php echo $item["b_type"] ?>"><?php echo $item["b_name"] ?></a>
+							</li>
+								<?php
+									}
+								?>
 							</ul>
 						</li>
 					</ul>

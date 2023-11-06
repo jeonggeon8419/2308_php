@@ -18,4 +18,7 @@ INSERT INTO boardname(b_type,b_name)
 VALUES('0', '자유게시판')
 ,('1', '질문게시판');
 
+INSERT INTO boardname(b_type,b_name)
+VALUES('3', '상담게시판');
+
 commit;

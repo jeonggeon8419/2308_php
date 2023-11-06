@@ -29,15 +29,15 @@ class UserController extends ParentsController {
 		}
 
 		// 세션에 u_id 저장
-		$_SESSION["u_id"] = $resultUserInfo[0]["u_id"];
+		$_SESSION["u_pk"] = $resultUserInfo[0]["id"];
 
-		return "Location: /board/list";
+		return "Location: /board/list?b_type=0";
 	}
 
 	// 로그아웃 처리
 	protected function logoutGet(){
 		session_unset();
-		session_destroy();
+		session_destroy();  // 세션파기처리
 
 		// 로그인 페이지 리턴
 		return "Location: /user/login";
