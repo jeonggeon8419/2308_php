@@ -34,6 +34,8 @@ class Router {
 		} else if($url === "user/regist") {
 			if($method === "GET") {
 				new UC("registGet");
+			} else {
+				new UC("registPost");
 			}
 		} else if($url === "board/list") {
 			if($method === "GET") {
@@ -45,6 +47,10 @@ class Router {
 			} else {
 				new BC("addPost");
 			}
+		} else if($url === "board/detail") {
+			if($method === "GET") {
+				new BC("detailGet");
+			} 
 		}
 
 		// 없는 경로일 경우
