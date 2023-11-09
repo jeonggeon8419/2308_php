@@ -23,12 +23,15 @@ class Router {
 
 		if($url === "user/login") {
 			if($method === "GET") {
+				// 해당 컨트롤러 호출
 				new UC("loginGet");
 			} else {
+				// 해당 컨트롤러 호출
 				new UC("loginPost");
 			}
 		} else if($url === "user/logout") {
 			if($method === "GET") {
+				// 해당 컨트롤러 호출
 				 new UC("logoutGet");
 			}
 		} else if($url === "user/regist") {
@@ -37,7 +40,12 @@ class Router {
 			} else {
 				new UC("registPost");
 			}
-		} else if($url === "board/list") {
+		} else if($url === "user/idchk"){
+			if($method === "POST") {
+				new UC("idChkPost");
+			}
+		}
+		 else if($url === "board/list") {
 			if($method === "GET") {
 				new BC("listGet");
 			}

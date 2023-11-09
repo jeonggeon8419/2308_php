@@ -89,6 +89,7 @@ class BoardController extends ParentsController {
 		$boardModel = new BoardModel();
 		$result = $boardModel->getBoardDetail($arrBoardDetailInfo);
 
+		// 이미지 패스 재설정
 		$result[0]["b_img"] = "/"._PATH_USERIMG.$result[0]["b_img"];
 		
 		// 레스폰스 데이터 작성

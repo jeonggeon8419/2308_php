@@ -33,8 +33,8 @@
 				<input type="password" class="form-control" placeholder="PW" aria-label="Username" aria-describedby="addon-wrapping" id="u_pw" name="u_pw">
 			  </div>
 			</div>
-			<button type="submit" class="btn btn-info text-center" style="width: 300px;">로그인</button><br><br>
-			<a href="/user/regist" class="btn btn-success text-center" style="width: 200px; height: 80px; margin-left:50px; padding-top: 25px;">새 계정 만들기</a>
+			<button type="submit" class="btn btn-info text-center" style="width: 300px; color:white; font-weight:bold;">로그인</button><br><br>
+			<a href="/user/regist" class="btn btn-success text-center" style="width: 200px; height: 80px; margin-left:50px; padding-top: 25px; font-weight:bold;">새 계정 만들기</a>
 		</form>
 	</main>
 

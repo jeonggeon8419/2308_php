@@ -3,21 +3,33 @@
 namespace controller;
 
 use model\UserModel;
+use lib\Validation;
 
 class UserController extends ParentsController {
 
-	// 로그인
+	// 로그인 페이지 이동
 	protected function loginGet() {
 		return "view/login.php";
 	}
 
 	// 로그인 처리 // 로그인 정보가 $_POST에 담겨있다
 	protected function loginPost() {
+		$inputData = [
+			"u_id" => $_POST["u_id"]
+			,"u_pw" => $_POST["u_pw"]
+		];
+
+		// 유효성 체크
+		if(!Validation::userChk($inputData)) {
+			$this->arrErrorMsg = Validation::getArrErrorMsg();
+			return "view/login.php";
+		}
 		// id, pw 설정 (DB에서 사용할 데이터 가공)
 		$arrInput = [];
 		$arrInput["u_id"] = $_POST["u_id"];
 		$arrInput["u_pw"] = $this->encryptionPassword($_POST["u_pw"]);
 		
+		// 유저 정보 획득
 		$modelUser = new UserModel();
 		$resultUserInfo = $modelUser->getUserInfo($arrInput, true);
 
@@ -50,38 +62,25 @@ class UserController extends ParentsController {
 
 	// 회원가입 처리
 	protected function registPost() {
-		$u_id = $_POST["u_id"];
-		$u_pw = $_POST["u_pw"];
-		$u_name = $_POST["u_name"];
+		$inputData = [
+			"u_id" =>  $_POST["u_id"]
+			,"u_pw" => $_POST["u_pw"]
+			,"u_pw_chk" => $_POST["u_pw_chk"]
+			,"u_name" => $_POST["u_name"]
+		];
 		$arrAddUserInfo = [
-			"u_id" => $u_id
-			,"u_pw" => $this->encryptionPassword($u_pw)
-			,"u_name" => $u_name
+			"u_id" => $_POST["u_id"]
+			,"u_pw" => $this->encryptionPassword($_POST["u_pw"])
+			,"u_name" => $_POST["u_name"]
 		];
 
-		$patternId = "/^[a-zA-Z0-9]{8,20}$/";
-		$patternPw = "/^[a-zA-Z0-9!@]{8,20}$/";
-		$patternName = "/^[a-zA-Z가-힣]{2,20}$/u";
+		// TODO : 발리데이션 체크
 
-		if(preg_match($patternId, $u_id, $match) === 0) {
-			// ID 에러처리
-			$this->arrErrorMsg[] = "아이디를 확인해 주세요";
-		}
-		if(preg_match($patternPw, $u_pw, $match) === 0) {
-			// PW 에러처리
-			$this->arrErrorMsg[] = "비밀번호를 확인해 주세요";
-		}
-		if(preg_match($patternName, $u_name, $match) === 0) {
-			// NAME 에러처리
-			$this->arrErrorMsg[] = "이름을 확인해 주세요";
-		}
-
+		
+	
 		// TODO : 아이디 중복 체크 필요
 
-		// 유효성 체크 실패
-		if(count($this->arrErrorMsg) > 0) {
-			return "view/regist.php";
-		}
+
 		// 인서트 처리
 		$userModel = new UserModel();
 		$userModel->beginTransaction();
@@ -96,6 +95,41 @@ class UserController extends ParentsController {
 
 		return "Location: /user/login";
 	}
+
+	protected function idChkPost() {
+		$errorFlg = "0";
+		$errorMsg = "";
+		$inputData = [
+			"u_id" => $_POST["u_id"]
+		];
+		// 유효성 체크
+		if(!Validation::userChk($inputData)) {
+			$errorFlg = "1";
+			$errorMsg = Validation::getArrErrorMsg()[0];	
+		}
+		// 중복 체크
+		$userModel = new UserModel();
+		$result = $userModel->getUserInfo($inputData);
+		$userModel->destroy();
+
+		if(count($result) > 0) {
+			$errorFlg = "1";
+			$errorMsg = "중복된 아이디입니다.";
+		}
+
+		// response 처리
+		$response = [
+			"errflg" => $errorFlg
+			,"msg" => $errorMsg
+		];
+		header('Content-type: application/json');
+		echo json_encode($response);
+		exit();
+		
+	}
+
+
+
 
 	// 비밀번호 암호와
 	private function encryptionPassword($pw) {
