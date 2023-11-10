@@ -105,3 +105,15 @@ route::get('/name/home/php504/user', function() {
     return '한강이 안보이는 집';
 })->name('name.user'); //체이닝 기법
 
+//--------------
+//컨트롤러 만들기
+//--------------
+
+// 커멘드로 컨트롤러 생성 : php artisan make:controller 컨트롤러명
+use App\Http\Controllers\TestController;
+// 해당기능명.액션명
+route::get('/test', [TestController::class, 'index'])->name('test.index');
+
+// php artisan make:controller 컨트롤러명 --resource
+use App\Http\Controllers\TaskController;
+Route::resource('/task', TaskController::class);
