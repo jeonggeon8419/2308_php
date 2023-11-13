@@ -15,6 +15,8 @@ return new class extends Migration
     {
         // migration 파일 생성 : php artisan make:migration 파일명
         // migration 실행(모든 migration 파일의 up()메소드를 실행) : php artisan migrate
+        // migration 리셋(모든 migration 파일의 down()메소드를 실행) : php artisan migrate:reset
+        // migration 롤백(가장 마지막에 실행한 migration의 내용을 롤백) : php artisan migrate:rollback
 
         Schema::create('boards', function (Blueprint $table) {
             // 글번호, 제목, 내용, 작성일, 수정일, 삭제일자
