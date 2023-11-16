@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\Board;
 
 
@@ -57,7 +58,16 @@ class BoardController extends Controller
      */
     public function show($id)
     {
+        // 게시글 데이터 획득
         $result = Board::find($id);
+
+        // 조회수 올리기
+        $result->b_hits++; // 조회수 1증가
+
+        // 업데이트 처리
+        $result->save();
+
+
         return view('detail')->with('data', $result);
     }
 
