@@ -17,10 +17,11 @@ class BoardController extends Controller
      */
     public function index()
     {
+        // del 231116 미들웨어로 이관
         // 로그인 체크
-        if(!Auth::check()) {
-            return redirect()->route('user.login.get');
-        }
+        // if(!Auth::check()) {
+        //     return redirect()->route('user.login.get');
+        // }
 
         // 게시글 획득
        
@@ -36,7 +37,7 @@ class BoardController extends Controller
      */
     public function create()
     {
-        //
+        return view('insert');
     }
 
     /**
@@ -47,7 +48,15 @@ class BoardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $b_title = $request->input('b_title');
+        // $b_content = $request->input('b_content');
+        // DB::beginTransction();
+        // Board::insert(['b_title' => $b_title, 'b_content' => $b_content]);
+        // DB::commit();
+        $result = Board::create($request->only('b_title', 'b_content'));
+        $result->save();
+
+        return redirect()->route('board.index');
     }
 
     /**
@@ -63,6 +72,7 @@ class BoardController extends Controller
 
         // 조회수 올리기
         $result->b_hits++; // 조회수 1증가
+        $result->timestamps = false;
 
         // 업데이트 처리
         $result->save();

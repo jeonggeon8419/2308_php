@@ -39,9 +39,11 @@ route::get('/user/logout', [UserController::class,'logoutget'])->name('user.logo
 // DELETE          user/{user} .................................................. user.destroy › UserController@destroy 회원 탈퇴 처리
 
 // 보드관련
-Route::resource('/board', BoardController::class);
+Route::middleware('auth')->resource('/board', BoardController::class);
 // GET|HEAD        board .......................................................... board.index › BoardController@index  
-// POST            board .......................................................... board.store › BoardController@store  
+Route::post('/board', [BoardController::class, 'store'])->name('board.store');
+// POST            board .......................................................... board.store › BoardController@store 
+Route::get('/board/create', [BoardController::class, 'create'])->name('board.create');
 // GET|HEAD        board/create ................................................. board.create › BoardController@create
 // GET|HEAD        board/{board} .................................................... board.show › BoardController@show  
 // PUT|PATCH       board/{board} ................................................ board.update › BoardController@update  

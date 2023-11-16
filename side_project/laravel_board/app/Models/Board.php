@@ -10,4 +10,9 @@ class Board extends Model
     use HasFactory;
 
     protected $primaryKey = 'b_id';
+
+    protected $fillable = [
+        'b_title',
+        'b_content',
+    ];
 }
