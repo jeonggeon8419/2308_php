@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BoardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +19,12 @@ Route::get('/', function () {
     return view('login');
 });
 
+// 유저관련
 route::get('/user/login', [UserController::class, 'loginget'])->name('user.login.get'); // 로그인 화면 이동
 route::post('/user/login', [UserController::class, 'loginpost'])->name('user.login.post'); // 로그인 처리
 route::get('/user/registration', [UserController::class,'registrationget'])->name('user.registration.get'); // 회원가입 이동
 route::post('/user/registration', [UserController::class,'registrationpost'])->name('user.registration.post'); // 회원가입 처리
-
-
-
+route::get('/user/logout', [UserController::class,'logoutget'])->name('user.logout.get');//로그아웃 처리
 
 // GET|HEAD        sanctum/csrf-cookie .................................... Laravel\Sanctum › CsrfCookieController@show 
 // GET|HEAD        user ............................................................. user.index › UserController@index 로그인 화면이동 
@@ -37,3 +37,16 @@ route::post('/user/registration', [UserController::class,'registrationpost'])->n
 // PUT|PATCH       user/{user} .................................................... user.update › UserController@update 회원 정보 수정 처리
 
 // DELETE          user/{user} .................................................. user.destroy › UserController@destroy 회원 탈퇴 처리
+
+// 보드관련
+Route::resource('/board', BoardController::class);
+// GET|HEAD        board .......................................................... board.index › BoardController@index  
+// POST            board .......................................................... board.store › BoardController@store  
+// GET|HEAD        board/create ................................................. board.create › BoardController@create
+// GET|HEAD        board/{board} .................................................... board.show › BoardController@show  
+// PUT|PATCH       board/{board} ................................................ board.update › BoardController@update  
+// DELETE          board/{board} .............................................. board.destroy › BoardController@destroy  
+// GET|HEAD        board/{board}/edit ............................................... board.edit › BoardController@edit 
+
+
+
