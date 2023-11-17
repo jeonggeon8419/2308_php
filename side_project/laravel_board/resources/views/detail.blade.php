@@ -3,30 +3,32 @@
 @section('title', 'Detail')
 
 @section('main')
- <main class="justify-content-center align-items-center h-75">
-	<div class="mb-3">
-			<p>글번호</p>
+<main>
+	<div class="card">
+		<div class="card-header">
 			<p>{{$data->b_id}}</p>
-	</div>		
-	<div class="mb-3">
-			<p>제목</p>
-			<p>{{$data->b_title}}</p>
-	</div>
-	<div class="mb-3">
-			<p>내용</p>
-			<p>{{$data->b_content}}</p>
-	</div>
-	<div class="mb-3">
-			<p>조회수</p>
-			<p>{{$data->b_hits}}</p>
-	</div>
-	<div class="mb-3">
-			<p>작성일</p>
-			<p>{{$data->created_at}}</p>
-	</div>
-	<div class="mb-3">
-			<p>수정일</p>
-			<p>{{$data->updated_at}}</p>
+			<h5 class="card-title">{{$data->b_title}}</h5>
+			<p>{{'조회수 : '.$data->b_hits}}</p>
+		</div>
+		<div class="card-body">
+			<p class="card-text">{{$data->b_content}}</p>
+			<hr>
+			<p>{{'작성일 : '.$data->created_at}}</p>
+			<p>{{'수정일 : '.$data->updated_at}}</p>
+		</div>
+		<div class="card-footer">
+			<form action="{{route('board.destroy', ['board' => $data->b_id])}}" method="post">
+				@csrf
+				@method('DELETE')
+				<button type="submit" class="btn btn-danger">삭제</button>
+			<div class="float-end">
+				<a class="btn btn-info" style="" href="{{route('board.index')}}">취소</a>
+				<a href="{{route('board.edit', ['board' => $data->b_id])}}" class="btn btn-info">수정</a>
+			</div>
+			</form>
+		</div>
+
+		
 	</div>
 </main>
 @endsection

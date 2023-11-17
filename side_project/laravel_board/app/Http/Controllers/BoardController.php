@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use App\Models\Board;
 
 
@@ -89,7 +91,8 @@ class BoardController extends Controller
      */
     public function edit($id)
     {
-        //
+        $result = Board::find($id);
+        return view('edit')->with('data', $result);
     }
 
     /**
@@ -101,7 +104,13 @@ class BoardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $result = Board::find($id);
+
+        $result->b_title = $request->b_title;
+        $result->b_content = $request->b_content;
+        $result->save();
+
+        return redirect()->route('board.show', ['board' => $result->b_id]);
     }
 
     /**
@@ -112,6 +121,9 @@ class BoardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Log::debug("--------- 삭제처리 시작 ---------");
+        Board::destroy($id);
+        Log::debug("--------- 삭제처리 종료 ---------");
+        return redirect()->route('board.index');
     }
 }
