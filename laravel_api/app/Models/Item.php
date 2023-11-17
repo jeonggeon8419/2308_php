@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Item extends Model
 {
+    //트레이트
     use HasFactory, SoftDeletes;
 
     protected $attributes = [
