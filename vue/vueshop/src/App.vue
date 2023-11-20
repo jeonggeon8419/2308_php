@@ -10,8 +10,31 @@
     <!-- 키값 필요할때 -->
     <!-- <a v-for="(item, i) in navList" :key="i">{{ i + ':' + item }}</a> -->
   </div>
+
+  <!-- 모달 -->
+  <transition name="modalAni">
   
+  
+  <div class="bg_black" v-if="modalFlg">
+    <div class="bg_white">
+      <img :src="modalProduct.img" alt="img">
+      <h4>{{ modalProduct.name }}</h4>
+      <p>{{ modalProduct.content }}</p>
+      <p>{{ modalProduct.price }}</p>
+      <p>조회수 : {{ modalProduct.viewCnt }}</p>
+      <button @click="modalFlg = false">닫기</button>
+    </div>
+  </div>
+</transition>
   <!-- 상품 리스트 -->
+  <div>
+    <div v-for="(item1, i) in products" :key="i">
+      <h4 @click="modalOpen(item1)">{{ item1.name }}</h4>
+      <p>{{ item1.price }} 원</p>
+      <button @click="plusOne(i)">조회수</button>
+      <span> : {{ item1.viewCnt }}</span>
+    </div>
+  </div>
   <!-- <div>
     <div>
       <h4 :style="sty_color">{{products[0]}}</h4>
@@ -26,18 +49,16 @@
        <p>{{prices[2]}}원</p>
     </div>  
   </div> -->
-  <div>
-    <div v-for="item1 in products" :key="item1">
-      <h4>{{ item1.name }}</h4>
-      <p>{{ item1.price }}원</p>
-    </div>
-  </div>
+
 </template>
 
 <script>
+// 자바스크립 문법 데이터 불러오기 data.js파일에서
+import data from './assets/js/data.js';
 // 데이터 저장 영역
 export default {
   name: 'App',
+  
   // 데이터 바인딩 : 우리가 사용할 데이터를 저장하는 공간
   data() {
     return {
@@ -45,18 +66,28 @@ export default {
       sty_color: 'color: blue',
       // products: ['양말','티셔츠','바지'],
       // prices : ['1500', '25000', '30000'],
-      products: [
-        {'name' : '양말', 'price': 1500},
-        {'name' : '티셔츠', 'price': 25000},
-        {'name' : '바지', 'price': 30000}
-      ]
+      products: data,
+      modalFlg: false,
+      modalProduct: {},
     }
   },
-  
+  // methods : 함수를 정의하는 영역
+  methods: {
+    plusOne(i) {
+      this.products[i].viewCnt++;
+    },
+    modalOpen(item) {
+      this.modalFlg = true;
+      this.modalProduct = item;
+    },
+
+  },
 }
 </script>
 
 <style>
+@import url('./assets/css/common.css');
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -65,7 +96,8 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-.nav {
+/* css파일로 이관 */
+/* .nav {
   background-color: #2c3e50;
   padding: 15px;
   border-radius: 10px;
@@ -79,5 +111,5 @@ export default {
 .nav a:hover {
   background-color: rgb(144, 92, 28);
   border-radius: 10px;
-}
+} */
 </style>
