@@ -1,40 +1,51 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
+
   <!-- 헤더 -->
-  <div class="nav">
-    <!-- <a href="#">홈</a>
+  <Header :data="navList"></Header>
+   <!-- <div class="nav"> 
+<a href="#">홈</a>
     <a href="#">상품</a>
-    <a href="#">기타</a> -->
-    <!-- 반복문 -->
-    <a v-for="item in navList" :key="item">{{ item }}</a>
-    <!-- 키값 필요할때 -->
-    <!-- <a v-for="(item, i) in navList" :key="i">{{ i + ':' + item }}</a> -->
-  </div>
+      <a href="#">기타</a> 
+    반복문
+    <a v-for="item in navList" :key="item">{{ item }}</a>  
+     키값 필요할때 -->
+     <!-- <a v-for="(item, i) in navList" :key="i">{{ i + ':' + item }}</a> 
+  </div> --> 
+
+  <!-- 할인 배너 -->
+  <Discount></Discount>
+
+  <!-- 컴포넌트로 이관 -->
+  <!-- <div class="discount">
+    <p>오늘 당장 구매하시면, 30% 할인</p>
+  </div> -->
 
   <!-- 모달 -->
-  <transition name="modalAni">
-  
-  
-  <div class="bg_black" v-if="modalFlg">
-    <div class="bg_white">
-      <img :src="modalProduct.img" alt="img">
-      <h4>{{ modalProduct.name }}</h4>
-      <p>{{ modalProduct.content }}</p>
-      <p>{{ modalProduct.price }}</p>
-      <p>조회수 : {{ modalProduct.viewCnt }}</p>
-      <button @click="modalFlg = false">닫기</button>
-    </div>
-  </div>
-</transition>
+<transition name="modalAni">
+  <Modal 
+   v-if= "modalFlg"
+   :data = "modalProduct"
+   @closeModal = "modalClose" 
+   ></Modal>
+  </transition>
   <!-- 상품 리스트 -->
   <div>
+    <ProductList v-for="(item, i) in products" :key="i"
+    :data = "item"
+    :productKey="i"
+    @fncOpen = "modalOpen"
+    @fncClick = "plusOne"
+  ></ProductList>
+</div>
+  <!-- <div>
     <div v-for="(item1, i) in products" :key="i">
       <h4 @click="modalOpen(item1)">{{ item1.name }}</h4>
       <p>{{ item1.price }} 원</p>
       <button @click="plusOne(i)">조회수</button>
       <span> : {{ item1.viewCnt }}</span>
     </div>
-  </div>
+  </div> -->
   <!-- <div>
     <div>
       <h4 :style="sty_color">{{products[0]}}</h4>
@@ -55,22 +66,28 @@
 <script>
 // 자바스크립 문법 데이터 불러오기 data.js파일에서
 import data from './assets/js/data.js';
+
+import Discount from './components/Discount.vue';
+import Header from './components/Header.vue';
+import Modal from './components/Modal.vue';
+import ProductList from './components/ProductList.vue';
+
 // 데이터 저장 영역
 export default {
   name: 'App',
   
   // 데이터 바인딩 : 우리가 사용할 데이터를 저장하는 공간
-  data() {
-    return {
-      navList: ['홈', '상품', '기타', '문의'],
-      sty_color: 'color: blue',
-      // products: ['양말','티셔츠','바지'],
-      // prices : ['1500', '25000', '30000'],
-      products: data,
-      modalFlg: false,
-      modalProduct: {},
-    }
-  },
+    data() {
+      return {
+        navList: ['홈', '상품', '기타', '문의'],
+        sty_color: 'color: blue',
+        // products: ['양말','티셔츠','바지'],
+        // prices : ['1500', '25000', '30000'],
+        products: data,
+        modalFlg: false,
+        modalProduct: {},
+      }
+    },
   // methods : 함수를 정의하는 영역
   methods: {
     plusOne(i) {
@@ -80,7 +97,17 @@ export default {
       this.modalFlg = true;
       this.modalProduct = item;
     },
+    modalClose() {
+      this.modalFlg = false;
+    },
+  },
 
+  // components : 컴포넌트를 등록하는 영역
+  components: {
+    Discount,
+    Header,
+    Modal,
+    ProductList,
   },
 }
 </script>
