@@ -15,6 +15,8 @@ const store = createStore({
 			postFileData: null,
 			// 가장 마지막 로드 된 게시글 번호 저장용
 			lastBoardId: 0,
+			//더보기 버튼 여부
+			flgBtnMoreView: true,
 		}
 	},
 
@@ -23,7 +25,11 @@ const store = createStore({
 		// 초기 데이터 셋팅용 뮤테이션 쓸때는 state
 		setBoardList(state, data) {
 			state.boardData = data;
-			state.lastBoardId = data[data.length - 1].id;
+			this.commit('setLastBoardId', data[data.length - 1].id);
+		},
+		// 마지막 게시글 번호 셋팅용
+		setLastBoardId(state, num) {
+			state.lastBoardId = num;
 		},
 		// 탭 ui 셋팅용
 		setFlgTapUI(state, num) {
@@ -46,6 +52,14 @@ const store = createStore({
 			state.imgURL = '';
 			state.postFileData = null;
 		},
+		// 더보기 데이터 추가
+		setAddBoardData(state, data) {
+			state.boardData.push(data);
+		},
+		// 더보기 버튼 활성화
+		setFlgBtnMoreView(state, boo) {
+			state.flgBtnMoreView = boo;
+		}
 	
 	},
 	// actions : ajax로 서버에 데이터를 요청할 때나  시간 함수등 비동기 처리는 actions에 정의
@@ -100,7 +114,27 @@ const store = createStore({
 				console.log(err);
 			});
 		},
-	
+		// 더보기
+		actionGetBoardItem(context) {
+			const url = 'http://112.222.157.156:6006/api/boards/' + context.state.lastBoardId;
+			const header = {
+				headers: {
+					'Authorization': 'Bearer meerkat',
+				}
+		};
+		axios.get(url, header)
+		.then(res => {
+			if(res.data) {
+				// 데이터 있을 경우
+				context.commit('setAddBoardData', res.data);
+				context.commit('setLastBoardId', res.data.id);
+			} else {
+				// 데이터 없을 경우
+				context.commit('setFlgBtnMoreView', false);
+			}
+		})
+		.catch(err => console.log(err.response.data))
+		}
 	}
 });
 

@@ -13,7 +13,7 @@
 <ContainerComponent></ContainerComponent>
 
 <!-- 더보기 버튼 -->
-<button v-if="$store.state.flgTapUI !== 1" style="margin-bottom: 20px;">더보기</button>
+<button v-if="$store.state.flgTapUI !== 1 && $store.state.flgBtnMoreView" style="margin-bottom: 20px;" @click="$store.dispatch('actionGetBoardItem')">더보기</button>
 
 <!-- 푸터 -->
 <div class="footer">
