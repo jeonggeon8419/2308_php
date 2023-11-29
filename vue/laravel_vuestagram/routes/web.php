@@ -12,18 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-    $data = ['name' => '루트', 'id' => 1];
-    return view('welcome')->with('data', json_encode($data));
+    return view('welcome');
 });
 
-Route::get('/login', function () {
-    $data = ['name' => '로그인', 'id' => 1];
-    return view('welcome')->with('data', json_encode($data));
-});
-
-Route::get('/board', function () {
-    $data = ['name' => '보드', 'id' => 1];
-    return view('welcome')->with('data', json_encode($data));
+Route::fallback(function(){
+    return response()->json([
+        'code' => 'E03'
+    ], 404);
 });
